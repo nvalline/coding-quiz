@@ -17,7 +17,7 @@
         <a href="#" id="view-highscores">View Highscores</a>
     </header>
     <main id="container">
-        <section id="quiz-block">
+        <section id="quiz-block" class="content-block">
             <h2>Take The Challenge</h2>
             <p class="question-desc">Try to answer the following code-related questions within the time limit. Wrong
                 answers will deduct your
@@ -29,9 +29,22 @@
                 <p id="time">Time: <span id="time-display">120</span></p>
             </div>
         </section>
+        <section id="leader-block" class="content-block">
+            <h2>Highscores</h2>
+            <ol id="leaderboard">
+                <li>John Doe - 5</li>
+                <li>John Doe - 5</li>
+                <li>John Doe - 5</li>
+            </ol>
+            <p>Your final score: <span>5</span></p>
+            <form id="leader-form">
+                <input type="text" id="leader-input" name="name" placeholder="Enter your name...">
+                <button>Submit</button>
+            </form>
+        </section>
     </main>
 
-    <script src="script.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 
 </html>

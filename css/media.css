@@ -16,8 +16,16 @@
         position: initial;
     }
 
-    #quiz-block {
+    .content-block {
         width: 100%;
+    }
+
+    #leader-form {
+        flex-direction: column;
+    }
+    
+    #leader-form input {
+        margin-bottom: 10px;
     }
 }
 

@@ -45,7 +45,7 @@ header a:hover {
     width: 80%;
 }
 
-#quiz-block {
+.content-block {
     margin: 0 auto;
     width: 60%;
     display: flex;
@@ -90,6 +90,46 @@ header a:hover {
 #answer-block p {
     font-size: 1.1rem;
     letter-spacing: 0.1rem;
+}
+
+.content-block h2 {
+    margin-bottom: 10px;
+}
+
+ol {
+    margin: 0 auto;
+}
+
+ol li {
+    margin: 5px;
+}
+
+#leader-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#leader-form input {
+    height: 25px;
+    width: 60%;
+    border: 1px solid #364f6b;
+    color: #364f6b;
+    font-size: 0.8rem;
+    padding-left: 10px;
+}
+
+#leader-form input::placeholder {
+    color: #bdbdbd;
+}
+
+#leader-form button {
+    background-color: #43dde6;
+    border: 2px solid #2fb1b8;
+    border-radius: 5%;
+    font-size: 1rem;
+    padding: 5px 15px;
 }
 
 /* End Main CSS */
