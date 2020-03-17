@@ -10,7 +10,23 @@
 </head>
 
 <body>
-
+    <header>
+        <h1>The Coding Quiz</h1>
+        <a href="#" id="view-highscores">View Highscores</a>
+    </header>
+    <main id="container">
+        <section id="quiz-block">
+            <h2>The Coding Quiz</h2>
+            <p>Try to answer the following code-related questions within the time limit. Wrong answers will deduct your
+                score/time by ten seconds.</p>
+            <button>Start Quiz</button>
+            <hr id="divider">
+            <div id="answer-block">
+                <span id="answer-status">Correct!</span>
+                <p id="time">Time: <span id="time-display">120</span></p>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
