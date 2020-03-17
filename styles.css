@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+header {
+    height: 10vh;
+    background-color: #364f6b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    color: #e3e3e3;
+    font-family: 'Teko', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 0.3rem;
+    text-align: center;
+    width: 100%;
+}
+
+header a {
+    position: absolute;
+    right: 10%;
+    color: #e3e3e3;
+    text-decoration: none;
+}
+
+header a:hover {
+    color: #43dde6;
+    font-size: 1.03rem;
+}
