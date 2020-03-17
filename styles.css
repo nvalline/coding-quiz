@@ -3,8 +3,11 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
+    min-height: 100%;
+    background-color: #f0f0f0;
 }
 
+/* header CSS */
 header {
     height: 10vh;
     background-color: #364f6b;
@@ -14,7 +17,7 @@ header {
 }
 
 header h1 {
-    color: #e3e3e3;
+    color: #f0f0f0;
     font-family: 'Teko', sans-serif;
     font-size: 3rem;
     letter-spacing: 0.3rem;
@@ -25,11 +28,67 @@ header h1 {
 header a {
     position: absolute;
     right: 10%;
-    color: #e3e3e3;
+    color: #f0f0f0;
     text-decoration: none;
 }
 
 header a:hover {
     color: #43dde6;
-    font-size: 1.03rem;
+    font-size: 1.01rem;
 }
+/* End Header CSS */
+
+/* Main CSS */
+
+#container {
+    margin: 100px auto;
+    width: 80%;
+}
+
+#quiz-block {
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question-desc {
+    margin-top: 0;
+    line-height: 1.5rem;
+    text-align: center;
+}
+
+#quiz-block button {
+    background-color: #43dde6;
+    border: 2px solid #2fb1b8;
+    border-radius: 7%;
+    margin: 10px 0;
+    padding: 5px 15px;
+    color: #364f6b;
+    font-size: 1rem;
+}
+
+#quiz-block button:hover {
+    border: 2px solid #43dde6;
+    cursor: pointer;
+}
+
+#divider {
+    width: 100%;
+}
+
+/* Answer & Time Block */
+#answer-block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+#answer-block p {
+    font-size: 1.1rem;
+    letter-spacing: 0.1rem;
+}
+
+/* End Main CSS */
