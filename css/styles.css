@@ -133,3 +133,8 @@ ol li {
 }
 
 /* End Main CSS */
+
+/* Visible or Hidden */
+.hidden {
+    display: none;
+}
