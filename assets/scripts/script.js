@@ -9,8 +9,12 @@ const questionBlock = document.querySelectorAll(".question-block");
 const answerBtns = document.querySelectorAll(".answer-btn");
 const answerStatus = document.getElementById("answer-status");
 
+let currentQuestion = questionBlock[0];
+let newQuestion = 0;
+
 let score = 0;
-let timeLeft = 11;
+let timeLeft = 60;
+
 
 // Timer Function
 function startTimer(event) {
@@ -31,24 +35,38 @@ function displayQuestions(event) {
     // display answer block
     answerTimeBlock.classList.remove("hidden");
     // display question block
-    questionOne.classList.remove("hidden");
+    currentQuestion.classList.remove("hidden");
     // start timer
     startTimer();
     // cycle through questions
 }
 
-function displayAnswer(event) {
-    console.log("answer button clicked")
+// Update Current Question
+function currentQ() {
+    console.log(currentQuestion)
+    for (var i = 0; i < questionBlock.length; i++) {
+        newQuestion = questionBlock[i + 1];
+        break;
+    }
 
+    console.log(newQuestion)
+}
+
+// Determine answer and adjust score & time
+function displayAnswer(event) {
     let correctAnswer = event.target.getAttribute("data-answer");
 
     if (correctAnswer === "correct") {
-        console.log("correct")
         answerStatus.textContent = "Correct!";
         score = score + 10;
+        currentQ();
     } else {
-        console.log("wrong")
         answerStatus.textContent = "Wrong...";
+        if (timeLeft > 10) {
+            timeLeft = timeLeft - 10;
+        } else {
+            timeLeft = 1;
+        }
     }
 }
 
