@@ -20,6 +20,14 @@
         width: 100%;
     }
 
+    #divider {
+        width: 100%;
+    }
+
+    #answer-block {
+        width: 100%;
+    }
+
     #leader-form {
         flex-direction: column;
     }
