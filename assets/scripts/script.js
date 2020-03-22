@@ -3,6 +3,7 @@ const leaderBlock = document.getElementById("leader-block");
 const time = document.getElementById("time");
 const timeDisplay = document.getElementById("time-display");
 const startBtn = document.getElementById("start-btn");
+const answerTimeBlock = document.getElementById("answer-time-block");
 
 // Timer Function
 function startTimer(event) {
@@ -14,6 +15,12 @@ function startTimer(event) {
         timeLeft -= 1;
         timeDisplay.innerText = timeLeft;
     }, 1000);
+}
+
+// Display Questions
+function displayQuestions(event) {
+    // display answer block
+    answerTimeBlock.classList.remove("hidden");
 }
 
 // start clicked => display Q1, start timer
@@ -35,4 +42,4 @@ function startTimer(event) {
 
 // if Play Again clicked return to Start Quiz
 
-startBtn.addEventListener("click", startTimer);
+startBtn.addEventListener("click", displayQuestions);
