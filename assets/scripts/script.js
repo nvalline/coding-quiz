@@ -5,6 +5,8 @@ const timeDisplay = document.getElementById("time-display");
 const startBtn = document.getElementById("start-btn");
 const answerTimeBlock = document.getElementById("answer-time-block");
 const questionOne = document.getElementById("question-one");
+const questionBlock = document.querySelectorAll(".question-block");
+const answerBtns = document.getElementsByClassName("answer-btn");
 
 let timeLeft = 11;
 
@@ -24,12 +26,22 @@ function startTimer(event) {
 function displayQuestions(event) {
     // hide start quiz
     quizBlock.classList.add("hidden");
-    // display Q1
-    questionOne.classList.remove("hidden");
     // display answer block
     answerTimeBlock.classList.remove("hidden");
+    // display question block
+    questionOne.classList.remove("hidden");
     // start timer
     startTimer();
+    // cycle through questions
+}
+
+function displayAnswer(event) {
+    console.log("answer button clicked")
+}
+
+// Event listener for Answer Buttons
+for (var i = 0; i < answerBtns.length; i++) {
+    answerBtns[i].addEventListener("click", displayAnswer, false);
 }
 
 // start clicked => display Q1, start timer
