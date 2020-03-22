@@ -6,12 +6,14 @@ const startBtn = document.getElementById("start-btn");
 const answerTimeBlock = document.getElementById("answer-time-block");
 const questionOne = document.getElementById("question-one");
 
+let timeLeft = 11;
+
 // Timer Function
 function startTimer(event) {
-    let timeLeft = 11;
     let quizTimer = setInterval(function () {
         if (timeLeft <= 1) {
             clearInterval(quizTimer);
+            console.log("Times Up")
         }
         timeLeft -= 1;
         timeDisplay.innerText = timeLeft;
@@ -20,7 +22,7 @@ function startTimer(event) {
 
 // Display Questions
 function displayQuestions(event) {
-    // hide intro text
+    // hide start quiz
     quizBlock.classList.add("hidden");
     // display Q1
     questionOne.classList.remove("hidden");
