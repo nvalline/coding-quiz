@@ -25,9 +25,9 @@
         <!-- Start Quiz -->
         <section id="quiz-block" class="content-block">
             <h2>Take The Challenge</h2>
-            <p class="question-desc">Try to answer the following code-related questions within the time limit. Wrong
-                answers will deduct your
-                score/time by ten seconds.</p>
+            <p class="question-desc">Try to answer the following code-related questions within the time limit.</p>
+            <p>Correct answers are worth 10 points.</p>
+            <p>Wrong answers will deduct your time by ten seconds.</p>
             <button id="start-btn">Start Quiz</button>
         </section>
 
@@ -70,7 +70,7 @@
             <h2>A ______________ is a set of text or button hyperlinks that can be used to access pages in your
                 web site?</h2>
             <button class="answer-btn" data-answer="wrong">Route Bar</button>
-            <button class="answer-btn" data-answer="correct">Map Bar</button>
+            <button class="answer-btn" data-answer="wrong">Map Bar</button>
             <button class="answer-btn" data-answer="wrong">Direction Bar</button>
             <button class="answer-btn" data-answer="correct">Navigation Bar</button>
         </section>
@@ -79,7 +79,7 @@
         <section id="answer-time-block" class="hidden">
             <hr id="divider">
             <div id="answer-block">
-                <p id="answer-status" data-answerStatus="answerStatus"></p>
+                <p id="answer-status"></p>
                 <p id="time">Time: <span id="time-display"></span></p>
             </div>
         </section>

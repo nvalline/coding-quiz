@@ -6,8 +6,10 @@ const startBtn = document.getElementById("start-btn");
 const answerTimeBlock = document.getElementById("answer-time-block");
 const questionOne = document.getElementById("question-one");
 const questionBlock = document.querySelectorAll(".question-block");
-const answerBtns = document.getElementsByClassName("answer-btn");
+const answerBtns = document.querySelectorAll(".answer-btn");
+const answerStatus = document.getElementById("answer-status");
 
+let score = 0;
 let timeLeft = 11;
 
 // Timer Function
@@ -37,6 +39,17 @@ function displayQuestions(event) {
 
 function displayAnswer(event) {
     console.log("answer button clicked")
+
+    let correctAnswer = event.target.getAttribute("data-answer");
+
+    if (correctAnswer === "correct") {
+        console.log("correct")
+        answerStatus.textContent = "Correct!";
+        score = score + 10;
+    } else {
+        console.log("wrong")
+        answerStatus.textContent = "Wrong...";
+    }
 }
 
 // Event listener for Answer Buttons
