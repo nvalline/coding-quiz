@@ -4,6 +4,7 @@ const time = document.getElementById("time");
 const timeDisplay = document.getElementById("time-display");
 const startBtn = document.getElementById("start-btn");
 const answerTimeBlock = document.getElementById("answer-time-block");
+const questionOne = document.getElementById("question-one");
 
 // Timer Function
 function startTimer(event) {
@@ -19,6 +20,8 @@ function startTimer(event) {
 
 // Display Questions
 function displayQuestions(event) {
+    // display Q1
+    questionOne.classList.remove("hidden");
     // display answer block
     answerTimeBlock.classList.remove("hidden");
 }
