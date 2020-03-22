@@ -45,6 +45,8 @@ header a:hover {
     width: 80%;
 }
 
+/* Quiz Content */
+/* Start Quiz */
 .content-block {
     margin: 0 auto;
     width: 60%;
@@ -60,7 +62,7 @@ header a:hover {
     text-align: center;
 }
 
-#quiz-block button {
+#quiz-block button, .answer-btn {
     background-color: #43dde6;
     border: 2px solid #2fb1b8;
     border-radius: 7%;
@@ -70,16 +72,21 @@ header a:hover {
     font-size: 1rem;
 }
 
-#quiz-block button:hover {
+#quiz-block button:hover, .answer-btn:hover {
     border: 2px solid #43dde6;
     cursor: pointer;
 }
 
+/* Answer Buttons Additional CSS */
+.answer-btn {
+    padding: 5px 30px;
+}
+
+/* Answer & Time Block */
 #divider {
     width: 60%;
 }
 
-/* Answer & Time Block */
 #answer-block {
     display: flex;
     justify-content: space-around;
