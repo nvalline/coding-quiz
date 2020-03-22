@@ -6,8 +6,8 @@ const startBtn = document.getElementById("start-btn");
 
 const questions = {
     question1: {
-        question: "True or false?You should avoid coding inline styles within an HTML document whenever possible?",
-        answer1: "True",
+        question: "True or false? You should avoid coding inline styles within an HTML document whenever possible?",
+        correct: "True",
         answer2: "False"
     },
     question2: {
@@ -15,11 +15,11 @@ const questions = {
         answer1: "4",
         answer2: "3",
         answer3: "2",
-        answer4: "1"
+        correct: "1"
     },
     question3: {
         question: "Which of the following tags would allow you to input a line break in your HTML document correctly?",
-        answer1: "Br",
+        correct: "Br",
         answer2: "B",
         answer3: "P",
         answer4: "Lb"
@@ -27,7 +27,7 @@ const questions = {
     question4: {
         question: "This section code holds the most of the page's information or content?",
         answer1: "HTML",
-        answer2: "BODY",
+        correct: "BODY",
         answer3: "TITLE",
         answer4: "HEAD"
     },
@@ -36,7 +36,7 @@ const questions = {
         answer1: "Route Bar",
         answer2: "Map Bar",
         answer3: "Direction Bar",
-        answer4: "Navigation Bar"
+        correct: "Navigation Bar"
     }
 };
 
