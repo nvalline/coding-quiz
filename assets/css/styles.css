@@ -76,7 +76,7 @@ header a:hover {
 }
 
 #divider {
-    width: 100%;
+    width: 60%;
 }
 
 /* Answer & Time Block */
@@ -84,7 +84,8 @@ header a:hover {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    margin: 0 auto;
+    width: 80%;
 }
 
 #answer-block p {
