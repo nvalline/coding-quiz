@@ -62,7 +62,7 @@ header a:hover {
     text-align: center;
 }
 
-#quiz-block button, .answer-btn {
+#quiz-block button, .answer-btn, .play-again-btn {
     background-color: #43dde6;
     border: 2px solid #2fb1b8;
     border-radius: 7%;
@@ -73,7 +73,7 @@ header a:hover {
     font-size: 1rem;
 }
 
-#quiz-block button:hover, .answer-btn:hover {
+#quiz-block button:hover, .answer-btn:hover, .play-again-btn:hover  {
     border: 2px solid #43dde6;
     cursor: pointer;
 }

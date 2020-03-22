@@ -1,5 +1,7 @@
 const quizBlock = document.getElementById("quiz-block");
+const yourScore = document.getElementById("your-score");
 const leaderBlock = document.getElementById("leader-block");
+const leaderForm = document.getElementById("leader-form");
 const time = document.getElementById("time");
 const timeDisplay = document.getElementById("time-display");
 const startBtn = document.getElementById("start-btn");
@@ -8,9 +10,8 @@ const questionOne = document.getElementById("question-one");
 const questionBlock = document.querySelectorAll(".question-block");
 const answerBtns = document.querySelectorAll(".answer-btn");
 const answerStatus = document.getElementById("answer-status");
-
-let currentQuestion = questionBlock[0];
-let newQuestion = 0;
+const viewHighScores = document.getElementById("view-highscores");
+const playAgainBtn = document.getElementById("play-again");
 
 let score = 0;
 let timeLeft = 60;
@@ -28,6 +29,27 @@ function startTimer(event) {
     }, 1000);
 }
 
+// Display Highscores & Return to Start
+function displayHighScores(event) {
+    // hide start quiz
+    quizBlock.classList.add("hidden");
+    // display highscores
+    leaderBlock.classList.remove("hidden");
+    // hide your score
+    yourScore.setAttribute("style", "display: none;");
+    // hide leader form
+    leaderForm.setAttribute("style", "display: none;");
+    playAgainBtn.innerText = "Give It A Go";
+}
+
+// Return to start
+function returnToStart(event) {
+    // display start quiz
+    quizBlock.classList.remove("hidden");
+    // hide highscores
+    leaderBlock.classList.add("hidden");
+}
+
 // Display Questions
 function displayQuestions(event) {
     // hide start quiz
@@ -35,21 +57,12 @@ function displayQuestions(event) {
     // display answer block
     answerTimeBlock.classList.remove("hidden");
     // display question block
-    currentQuestion.classList.remove("hidden");
+    questionOne.classList.remove("hidden");
+    // hide highscore link
+    viewHighScores.classList.add("hidden")
     // start timer
     startTimer();
     // cycle through questions
-}
-
-// Update Current Question
-function currentQ() {
-    console.log(currentQuestion)
-    for (var i = 0; i < questionBlock.length; i++) {
-        newQuestion = questionBlock[i + 1];
-        break;
-    }
-
-    console.log(newQuestion)
 }
 
 // Determine answer and adjust score & time
@@ -59,7 +72,6 @@ function displayAnswer(event) {
     if (correctAnswer === "correct") {
         answerStatus.textContent = "Correct!";
         score = score + 10;
-        currentQ();
     } else {
         answerStatus.textContent = "Wrong...";
         if (timeLeft > 10) {
@@ -74,6 +86,7 @@ function displayAnswer(event) {
 for (var i = 0; i < answerBtns.length; i++) {
     answerBtns[i].addEventListener("click", displayAnswer, false);
 }
+
 
 // start clicked => display Q1, start timer
 
@@ -93,5 +106,6 @@ for (var i = 0; i < answerBtns.length; i++) {
 // if View Highscores clicked display leaderboard w/o input => Play Again button displays Take Quiz
 
 // if Play Again clicked return to Start Quiz
-
+playAgainBtn.addEventListener("click", returnToStart);
+viewHighScores.addEventListener("click", displayHighScores);
 startBtn.addEventListener("click", displayQuestions);
