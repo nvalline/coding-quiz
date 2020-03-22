@@ -20,10 +20,14 @@ function startTimer(event) {
 
 // Display Questions
 function displayQuestions(event) {
+    // hide intro text
+    quizBlock.classList.add("hidden");
     // display Q1
     questionOne.classList.remove("hidden");
     // display answer block
     answerTimeBlock.classList.remove("hidden");
+    // start timer
+    startTimer();
 }
 
 // start clicked => display Q1, start timer
