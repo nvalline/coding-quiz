@@ -12,23 +12,34 @@
 </head>
 
 <body>
+    <!-- Top Header Area -->
     <header>
         <h1>The Coding Quiz</h1>
         <a href="#" id="view-highscores">View Highscores</a>
     </header>
+
+    <!-- Main Content Area -->
     <main id="container">
+
+        <!-- Quiz Content -->
         <section id="quiz-block" class="content-block">
             <h2>Take The Challenge</h2>
             <p class="question-desc">Try to answer the following code-related questions within the time limit. Wrong
                 answers will deduct your
                 score/time by ten seconds.</p>
             <button id="start-btn">Start Quiz</button>
+        </section>
+
+        <!-- Answer & Time Section -->
+        <section>
             <hr id="divider">
             <div id="answer-block">
                 <p id="answer-status">Correct!</p>
                 <p id="time">Time: <span id="time-display"></span></p>
             </div>
         </section>
+
+        <!-- Leader Board Section -->
         <section id="leader-block" class="content-block hidden">
             <h2>Highscores</h2>
             <ol id="leaderboard">
