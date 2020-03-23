@@ -2,6 +2,7 @@ const quizBlock = document.getElementById("quiz-block");
 const yourScore = document.getElementById("your-score");
 const leaderBlock = document.getElementById("leader-block");
 const leaderForm = document.getElementById("leader-form");
+const submitBtn = document.getElementById("submit-btn");
 const time = document.getElementById("time");
 const timeDisplay = document.getElementById("time-display");
 const startBtn = document.getElementById("start-btn");
@@ -17,6 +18,20 @@ let score = 0;
 const initialTime = 60;
 let timeLeft = initialTime;
 
+let currentQuestion = 0;
+
+for (var j = 0; j < questionBlock.length; j++) {
+    currentQuestion = questionBlock[j];
+}
+
+// console.log(j)
+// console.log(currentQuestion)
+// console.log(questionBlock)
+// console.log(questionBlock[0])
+// console.log(questionBlock[1])
+// console.log(questionBlock[2])
+// console.log(questionBlock[3])
+// console.log(questionBlock[4])
 
 // Timer Function
 function startTimer(event) {
@@ -61,6 +76,17 @@ function showLeaderboard() {
     yourScore.childNodes[1].innerText = score;
     timeLeft = initialTime;
     answerStatus.innerText = "";
+
+
+
+}
+
+// submit name to leaderboard
+function submitScore(event) {
+    let name = document.getElementById("leader-input").value;
+    // save to local storage
+    localStorage.setItem("name", name);
+    localStorage.setItem("score", score);
 }
 
 // Display Questions
@@ -69,10 +95,10 @@ function displayQuestions(event) {
     quizBlock.classList.add("hidden");
     // display answer block
     answerTimeBlock.classList.remove("hidden");
-    // display question block
-    questionOne.classList.remove("hidden");
     // hide highscore link
     viewHighScores.classList.add("hidden")
+    // display question block
+    questionOne.classList.remove("hidden")
     // start timer
     startTimer();
 
@@ -102,6 +128,7 @@ for (var i = 0; i < answerBtns.length; i++) {
 
 
 // Global event listeners
+submitBtn.addEventListener("click", submitScore);
 playAgainBtn.addEventListener("click", returnToStart);
 viewHighScores.addEventListener("click", displayHighScores);
 startBtn.addEventListener("click", displayQuestions);
