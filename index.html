@@ -23,60 +23,18 @@
 
         <!-- Quiz Content -->
         <!-- Start Quiz -->
-        <section id="quiz-block" class="content-block">
-            <h2>Take The Challenge</h2>
-            <p class="question-desc">Try to answer the following code-related questions within the time limit.</p>
-            <p>Correct answers are worth 10 points.</p>
-            <p>Wrong answers will deduct your time by 10 seconds.</p>
-            <button id="start-btn" class="btn">Start Quiz</button>
-        </section>
-
-        <!-- Question One -->
-        <section id="question-one" class="question-block hide">
-            <h2>True or false? You should avoid coding inline styles within an HTML document whenever possible?</h2>
-            <button class="btn answer-btn" data-answer="correct">True</button>
-            <button class="btn answer-btn" data-answer="wrong">False</button>
-        </section>
-
-        <!-- Question Two -->
-        <section id="question-two" class="question-block hide">
-            <h2>An ID that has been created in your CSS can be used __________ time(s) within you HTML document?</h2>
-            <button class="btn answer-btn" data-answer="wrong">Four</button>
-            <button class="btn answer-btn" data-answer="wrong">Three</button>
-            <button class="btn answer-btn" data-answer="wrong">Two</button>
-            <button class="btn answer-btn" data-answer="correct">One</button>
-        </section>
-
-        <!-- Question Three -->
-        <section id="question-three" class="question-block hide">
-            <h2>Which of the following tags would allow you to input a line break in your HTML document correctly?</h2>
-            <button class="btn answer-btn" data-answer="correct">Br</button>
-            <button class="btn answer-btn" data-answer="wrong">B</button>
-            <button class="btn answer-btn" data-answer="wrong">P</button>
-            <button class="btn answer-btn" data-answer="wrong">Lb</button>
-        </section>
-
-        <!-- Question Four -->
-        <section id="question-four" class="question-block hide">
-            <h2>This section code holds the most of the page's information or content?</h2>
-            <button class="btn answer-btn" data-answer="wrong">HTML</button>
-            <button class="btn answer-btn" data-answer="correct">BODY</button>
-            <button class="btn answer-btn" data-answer="wrong">TITLE</button>
-            <button class="btn answer-btn" data-answer="wrong">HEAD</button>
-        </section>
-
-        <!-- Question Five -->
-        <section id="question-five" class="question-block hide">
-            <h2>A ______________ is a set of text or button hyperlinks that can be used to access pages in your
-                web site?</h2>
-            <button class="btn answer-btn" data-answer="wrong">Route Bar</button>
-            <button class="btn btn answer-btn" data-answer="wrong">Map Bar</button>
-            <button class="btn btn answer-btn" data-answer="wrong">Direction Bar</button>
-            <button class="btn btn answer-btn" data-answer="correct">Navigation Bar</button>
+        <section id="quiz-container" class="content-block">
+            <div id="start-content">
+                <h2>Take The Challenge</h2>
+                <p class="question-desc">Try to answer the following code-related questions within the time limit.</p>
+                <p>Correct answers are worth 10 points.</p>
+                <p>Wrong answers will deduct your time by 10 seconds.</p>
+                <button id="start-btn" class="btn">Start Quiz</button>
+            </div>
         </section>
 
         <!-- Answer & Time Section -->
-        <section id="answer-time-block" class=hide">
+        <section id="answer-time-container" class="hide">
             <hr id="divider">
             <div id="answer-block">
                 <p id="answer-status"></p>
@@ -107,3 +65,47 @@
 </body>
 
 </html>
+
+<!-- Question One -->
+<!-- <section id="question-one" class="question-block hide">
+    <h2>True or false? You should avoid coding inline styles within an HTML document whenever possible?</h2>
+    <button class="btn answer-btn" data-answer="correct">True</button>
+    <button class="btn answer-btn" data-answer="wrong">False</button>
+</section> -->
+
+<!-- Question Two -->
+<!-- <section id="question-two" class="question-block hide">
+    <h2>An ID that has been created in your CSS can be used __________ time(s) within you HTML document?</h2>
+    <button class="btn answer-btn" data-answer="wrong">Four</button>
+    <button class="btn answer-btn" data-answer="wrong">Three</button>
+    <button class="btn answer-btn" data-answer="wrong">Two</button>
+    <button class="btn answer-btn" data-answer="correct">One</button>
+</section> -->
+
+<!-- Question Three -->
+<!-- <section id="question-three" class="question-block hide">
+    <h2>Which of the following tags would allow you to input a line break in your HTML document correctly?</h2>
+    <button class="btn answer-btn" data-answer="correct">Br</button>
+    <button class="btn answer-btn" data-answer="wrong">B</button>
+    <button class="btn answer-btn" data-answer="wrong">P</button>
+    <button class="btn answer-btn" data-answer="wrong">Lb</button>
+</section> -->
+
+<!-- Question Four -->
+<!-- <section id="question-four" class="question-block hide">
+    <h2>This section code holds the most of the page's information or content?</h2>
+    <button class="btn answer-btn" data-answer="wrong">HTML</button>
+    <button class="btn answer-btn" data-answer="correct">BODY</button>
+    <button class="btn answer-btn" data-answer="wrong">TITLE</button>
+    <button class="btn answer-btn" data-answer="wrong">HEAD</button>
+</section> -->
+
+<!-- Question Five -->
+<!-- <section id="question-five" class="question-block hide">
+    <h2>A ______________ is a set of text or button hyperlinks that can be used to access pages in your
+        web site?</h2>
+    <button class="btn answer-btn" data-answer="wrong">Route Bar</button>
+    <button class="btn btn answer-btn" data-answer="wrong">Map Bar</button>
+    <button class="btn btn answer-btn" data-answer="wrong">Direction Bar</button>
+    <button class="btn btn answer-btn" data-answer="correct">Navigation Bar</button>
+</section> -->
