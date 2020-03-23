@@ -23,6 +23,8 @@ function startTimer(event) {
         if (timeLeft <= 1) {
             clearInterval(quizTimer);
             console.log("Times Up")
+            // Trigger show leaderboard
+            showLeaderboard();
         }
         timeLeft -= 1;
         timeDisplay.innerText = timeLeft;
@@ -50,6 +52,14 @@ function returnToStart(event) {
     leaderBlock.classList.add("hidden");
 }
 
+// Show leaderboard with input & score
+function showLeaderboard() {
+    questionOne.classList.add("hidden");
+    answerTimeBlock.classList.add("hidden");
+    leaderBlock.classList.remove("hidden");
+    yourScore.childNodes[1].innerText = score;
+}
+
 // Display Questions
 function displayQuestions(event) {
     // hide start quiz
@@ -62,7 +72,7 @@ function displayQuestions(event) {
     viewHighScores.classList.add("hidden")
     // start timer
     startTimer();
-    // cycle through questions
+
 }
 
 // Determine answer and adjust score & time
@@ -88,6 +98,11 @@ for (var i = 0; i < answerBtns.length; i++) {
 }
 
 
+// Global event listeners
+playAgainBtn.addEventListener("click", returnToStart);
+viewHighScores.addEventListener("click", displayHighScores);
+startBtn.addEventListener("click", displayQuestions);
+
 // start clicked => display Q1, start timer
 
 // if correct clicked => display Correct
@@ -102,10 +117,3 @@ for (var i = 0; i < answerBtns.length; i++) {
 // after input submitted hide input
 
 // if time = 0, game ends and displays leaderboard
-
-// if View Highscores clicked display leaderboard w/o input => Play Again button displays Take Quiz
-
-// if Play Again clicked return to Start Quiz
-playAgainBtn.addEventListener("click", returnToStart);
-viewHighScores.addEventListener("click", displayHighScores);
-startBtn.addEventListener("click", displayQuestions);
