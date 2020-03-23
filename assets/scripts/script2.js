@@ -4,6 +4,7 @@ const questionContainer = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const answerTimeContainer = document.getElementById('answer-time-container')
+const endScreenContainer = document.getElementById('end-screen-container')
 const questions = [
     {
         question: "An ID that has been created in your CSS can be used __________ time(s) within you HTML document?",
@@ -63,20 +64,22 @@ function startQuiz() {
     currentQuestionIndex = questions[0]
     answerTimeContainer.classList.remove('hide')
     showNextQuestion()
-    nextQuestionIndex()
 }
 
 function nextQuestionIndex() {
     nextQuestion = questions.indexOf(currentQuestionIndex)
     nextQuestion++
     currentQuestionIndex = questions[nextQuestion]
-    console.log(currentQuestionIndex)
-    console.log(nextQuestion)
 }
 
 function showNextQuestion() {
     resetState()
-    showQuestion(currentQuestionIndex)
+    if (!currentQuestionIndex) {
+        console.log("Show input")
+        showEndScreen()
+    } else {
+        showQuestion(currentQuestionIndex)
+    }
 }
 
 function showQuestion(question) {
@@ -113,6 +116,12 @@ function resetState() {
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
     }
+}
+
+function showEndScreen() {
+    questionContainer.classList.add('hide')
+    answerTimeContainer.classList.add('hide')
+    endScreenContainer.classList.remove('hide')
 }
 // display first question & answers
 
