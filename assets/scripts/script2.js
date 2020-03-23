@@ -11,6 +11,7 @@ const submitBtn = document.getElementById('submit-btn')
 const leaderboardContainer = document.getElementById('leaderboard-container')
 const leaderName = document.getElementById('leader-input')
 const playAgainBtn = document.getElementById('play-again')
+const leaderboardList = document.getElementById('leaderboard-list')
 const questions = [
     {
         question: "An ID that has been created in your CSS can be used __________ time(s) within you HTML document?",
@@ -87,7 +88,7 @@ function nextQuestionIndex() {
 }
 
 function showNextQuestion() {
-    resetState()
+    resetAnswerState()
     if (!currentQuestionIndex || time <= 1) {
         clearInterval(quizTimer)
         showEndScreen()
@@ -125,7 +126,7 @@ function selectAnswer(event) {
     showNextQuestion()
 }
 
-function resetState() {
+function resetAnswerState() {
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
     }
@@ -154,10 +155,11 @@ function showEndScreen() {
 
 function submitLeaderInfo(event) {
     event.preventDefault()
-    let leaderText = leaderName.value.trim() + " - " + score
+    let leaderText = leaderName.value.trim()
     if (leaderText === "") {
         return
     }
+    leaderText = leaderText + " - " + score
     leaders.push(leaderText)
     leaderName.value = ""
     console.log(leaders)
@@ -165,22 +167,34 @@ function submitLeaderInfo(event) {
 }
 
 function showLeaderboard(event) {
-    // event.preventDefault()
-    // let leaderText = leaderName.value.trim() + " - " + score
     endScreenContainer.classList.add('hide')
     leaderboardContainer.classList.remove('hide')
+    leaders.forEach(showLeaders)
 
     // restart game
     playAgainBtn.addEventListener('click', resetQuiz)
 }
 
 function resetQuiz() {
+    resetLeaderState()
     leaderboardContainer.classList.add('hide')
     startContainer.classList.remove('hide')
     currentQuestionIndex = questions[0]
     nextQuestion = questions.indexOf(currentQuestionIndex)
+    score = 0
 }
 
+function showLeaders(leader) {
+    let liElement = document.createElement('li')
+    liElement.innerText = leader
+    leaderboardList.appendChild(liElement)
+}
+
+function resetLeaderState() {
+    while (leaderboardList.firstChild) {
+        leaderboardList.removeChild(leaderboardList.firstChild)
+    }
+}
 // display first question & answers
 
 // determine if correct
