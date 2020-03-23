@@ -1,6 +1,7 @@
 const quizBlock = document.getElementById("quiz-block");
 const yourScore = document.getElementById("your-score");
 const leaderBlock = document.getElementById("leader-block");
+const leaderboard = document.getElementById("leaderboard");
 const leaderForm = document.getElementById("leader-form");
 const submitBtn = document.getElementById("submit-btn");
 const time = document.getElementById("time");
@@ -14,9 +15,10 @@ const answerStatus = document.getElementById("answer-status");
 const viewHighScores = document.getElementById("view-highscores");
 const playAgainBtn = document.getElementById("play-again");
 
-let score = 0;
+const leaders = {};
 const initialTime = 60;
 let timeLeft = initialTime;
+let score = 0;
 
 let currentQuestion = 0;
 
@@ -24,21 +26,11 @@ for (var j = 0; j < questionBlock.length; j++) {
     currentQuestion = questionBlock[j];
 }
 
-// console.log(j)
-// console.log(currentQuestion)
-// console.log(questionBlock)
-// console.log(questionBlock[0])
-// console.log(questionBlock[1])
-// console.log(questionBlock[2])
-// console.log(questionBlock[3])
-// console.log(questionBlock[4])
-
 // Timer Function
 function startTimer(event) {
     let quizTimer = setInterval(function () {
         if (timeLeft <= 1) {
             clearInterval(quizTimer);
-            console.log("Times Up")
             // Trigger show leaderboard
             showLeaderboard();
         }
@@ -76,21 +68,24 @@ function showLeaderboard() {
     yourScore.childNodes[1].innerText = score;
     timeLeft = initialTime;
     answerStatus.innerText = "";
-
-
-
 }
 
-// submit name to leaderboard
+// Submit name to leaderboard
 function submitScore(event) {
     let name = document.getElementById("leader-input").value;
+    leaders.name = name;
+    leaders.score = score;
+    let newLeaderNode = document.createElement("li");
+    newLeaderNode.innerText = leaders.name + " - " + leaders.score;
+    leaderboard.appendChild(newLeaderNode);
     // save to local storage
-    localStorage.setItem("name", name);
-    localStorage.setItem("score", score);
+    localStorage.setItem("leaders", JSON.stringify(leaders));
 }
 
 // Display Questions
 function displayQuestions(event) {
+    // start timer
+    startTimer();
     // hide start quiz
     quizBlock.classList.add("hidden");
     // display answer block
@@ -99,8 +94,6 @@ function displayQuestions(event) {
     viewHighScores.classList.add("hidden")
     // display question block
     questionOne.classList.remove("hidden")
-    // start timer
-    startTimer();
 
 }
 
