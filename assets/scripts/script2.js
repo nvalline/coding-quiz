@@ -7,6 +7,10 @@ const answerTimeContainer = document.getElementById('answer-time-container')
 const endScreenContainer = document.getElementById('end-screen-container')
 const scoreElement = document.getElementById('your-score')
 const timeDisplayElement = document.getElementById('time-display')
+const submitBtn = document.getElementById('submit-btn')
+const leaderboardContainer = document.getElementById('leaderboard-container')
+const leaderName = document.getElementById('leader-input')
+const playAgainBtn = document.getElementById('play-again')
 const questions = [
     {
         question: "An ID that has been created in your CSS can be used __________ time(s) within you HTML document?",
@@ -60,7 +64,10 @@ let score = 0
 let currentQuestionIndex
 let nextQuestion
 let time = initialTime
+let quizTimer
 
+let leaders = []
+console.log(leaders)
 startBtn.addEventListener('click', startQuiz)
 
 // start Quiz
@@ -82,6 +89,7 @@ function nextQuestionIndex() {
 function showNextQuestion() {
     resetState()
     if (!currentQuestionIndex || time <= 1) {
+        clearInterval(quizTimer)
         showEndScreen()
     } else {
         showQuestion(currentQuestionIndex)
@@ -111,7 +119,6 @@ function selectAnswer(event) {
     } else {
         // subtract time
         time = time - 10
-        console.log("Need to subtract time")
     }
 
     nextQuestionIndex()
@@ -124,16 +131,9 @@ function resetState() {
     }
 }
 
-function showEndScreen() {
-    questionContainer.classList.add('hide')
-    answerTimeContainer.classList.add('hide')
-    endScreenContainer.classList.remove('hide')
-    scoreElement.innerText = score
-}
-
 // Timer Function
 function startTimer(event) {
-    let quizTimer = setInterval(function () {
+    quizTimer = setInterval(function () {
         if (time <= 1) {
             clearInterval(quizTimer);
             // Trigger show end screen
@@ -144,6 +144,42 @@ function startTimer(event) {
     }, 1000);
 }
 
+function showEndScreen() {
+    questionContainer.classList.add('hide')
+    answerTimeContainer.classList.add('hide')
+    endScreenContainer.classList.remove('hide')
+    scoreElement.innerText = score
+    submitBtn.addEventListener('click', submitLeaderInfo)
+}
+
+function submitLeaderInfo(event) {
+    event.preventDefault()
+    let leaderText = leaderName.value.trim() + " - " + score
+    if (leaderText === "") {
+        return
+    }
+    leaders.push(leaderText)
+    leaderName.value = ""
+    console.log(leaders)
+    showLeaderboard()
+}
+
+function showLeaderboard(event) {
+    // event.preventDefault()
+    // let leaderText = leaderName.value.trim() + " - " + score
+    endScreenContainer.classList.add('hide')
+    leaderboardContainer.classList.remove('hide')
+
+    // restart game
+    playAgainBtn.addEventListener('click', resetQuiz)
+}
+
+function resetQuiz() {
+    leaderboardContainer.classList.add('hide')
+    startContainer.classList.remove('hide')
+    currentQuestionIndex = questions[0]
+    nextQuestion = questions.indexOf(currentQuestionIndex)
+}
 
 // display first question & answers
 
