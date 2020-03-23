@@ -5,6 +5,8 @@ const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const answerTimeContainer = document.getElementById('answer-time-container')
 const endScreenContainer = document.getElementById('end-screen-container')
+const scoreElement = document.getElementById('your-score')
+const timeDisplayElement = document.getElementById('time-display')
 const questions = [
     {
         question: "An ID that has been created in your CSS can be used __________ time(s) within you HTML document?",
@@ -51,14 +53,19 @@ const questions = [
     }
 ]
 
+const initialTime = 30
+
+let score = 0
+
 let currentQuestionIndex
 let nextQuestion
-let score = 0
+let time = initialTime
 
 startBtn.addEventListener('click', startQuiz)
 
 // start Quiz
 function startQuiz() {
+    startTimer()
     startContainer.classList.add('hide')
     questionContainer.classList.remove('hide')
     currentQuestionIndex = questions[0]
@@ -74,8 +81,7 @@ function nextQuestionIndex() {
 
 function showNextQuestion() {
     resetState()
-    if (!currentQuestionIndex) {
-        console.log("Show input")
+    if (!currentQuestionIndex || time <= 1) {
         showEndScreen()
     } else {
         showQuestion(currentQuestionIndex)
@@ -102,9 +108,9 @@ function selectAnswer(event) {
     let selectedButton = event.target
     if (selectedButton.dataset.correct) {
         score = score + 10
-        console.log(score)
     } else {
         // subtract time
+        time = time - 10
         console.log("Need to subtract time")
     }
 
@@ -122,7 +128,23 @@ function showEndScreen() {
     questionContainer.classList.add('hide')
     answerTimeContainer.classList.add('hide')
     endScreenContainer.classList.remove('hide')
+    scoreElement.innerText = score
 }
+
+// Timer Function
+function startTimer(event) {
+    let quizTimer = setInterval(function () {
+        if (time <= 1) {
+            clearInterval(quizTimer);
+            // Trigger show end screen
+            showEndScreen();
+        }
+        time -= 1;
+        timeDisplayElement.innerText = time;
+    }, 1000);
+}
+
+
 // display first question & answers
 
 // determine if correct
