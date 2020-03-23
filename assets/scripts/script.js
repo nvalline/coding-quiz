@@ -14,7 +14,8 @@ const viewHighScores = document.getElementById("view-highscores");
 const playAgainBtn = document.getElementById("play-again");
 
 let score = 0;
-let timeLeft = 60;
+const initialTime = 60;
+let timeLeft = initialTime;
 
 
 // Timer Function
@@ -58,6 +59,8 @@ function showLeaderboard() {
     answerTimeBlock.classList.add("hidden");
     leaderBlock.classList.remove("hidden");
     yourScore.childNodes[1].innerText = score;
+    timeLeft = initialTime;
+    answerStatus.innerText = "";
 }
 
 // Display Questions
