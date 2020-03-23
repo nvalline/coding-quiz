@@ -1,29 +1,9 @@
 const startBtn = document.getElementById('start-btn')
 const startContainer = document.getElementById('start-container')
 const questionContainer = document.getElementById('question-container')
+const questionElement = document.getElementById('question')
+const answerButtonsElement = document.getElementById('answer-buttons')
 const answerTimeContainer = document.getElementById('answer-time-container')
-
-startBtn.addEventListener('click', startQuiz)
-// start Quiz
-function startQuiz() {
-    startContainer.classList.add('hide')
-    questionContainer.classList.remove('hide')
-    answerTimeContainer.classList.remove('hide')
-}
-// display first question & answers
-
-// determine if correct
-
-// advance to next question
-
-// log score
-
-// set timer
-
-// after last question advance to input
-
-// after input advance to leaderboard
-
 const questions = [
     {
         question: "An ID that has been created in your CSS can be used __________ time(s) within you HTML document?",
@@ -69,3 +49,69 @@ const questions = [
         ]
     }
 ]
+
+let currentQuestionIndex
+let nextQuestion
+
+startBtn.addEventListener('click', startQuiz)
+
+// start Quiz
+function startQuiz() {
+    startContainer.classList.add('hide')
+    questionContainer.classList.remove('hide')
+    currentQuestionIndex = questions[0]
+    answerTimeContainer.classList.remove('hide')
+    showNextQuestion()
+    nextQuestionIndex()
+}
+
+function nextQuestionIndex() {
+    nextQuestion = questions.indexOf(currentQuestionIndex)
+    nextQuestion++
+}
+
+function showNextQuestion() {
+    resetState()
+    showQuestion(currentQuestionIndex)
+}
+
+function showQuestion(question) {
+    questionElement.innerText = question.question
+    question.answers.forEach(showAnswerButtons)
+}
+
+function showAnswerButtons(answer) {
+    const button = document.createElement('button')
+    button.innerText = answer.text
+    button.classList.add('btn')
+    if (answer.correct) {
+        button.dataset.correct = answer.correct
+    }
+    button.addEventListener('click', selectAnswer)
+    answerButtonsElement.appendChild(button)
+}
+
+function selectAnswer() {
+
+
+    nextQuestionIndex()
+}
+
+function resetState() {
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+    }
+}
+// display first question & answers
+
+// determine if correct
+
+// advance to next question
+
+// log score
+
+// set timer
+
+// after last question advance to input
+
+// after input advance to leaderboard
