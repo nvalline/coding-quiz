@@ -13,6 +13,7 @@ const questionBlock = document.querySelectorAll(".question-block");
 const answerBtns = document.querySelectorAll(".answer-btn");
 const answerStatus = document.getElementById("answer-status");
 const viewHighScores = document.getElementById("view-highscores");
+const nameInput = document.getElementById("name-input");
 const playAgainBtn = document.getElementById("play-again");
 
 const leaders = {};
@@ -22,49 +23,48 @@ let score = 0;
 
 let currentQuestion = 0;
 
+// Display Questions
+function displayQuestions(event) {
+    // start timer
+    startTimer();
+    // hide start quiz
+    quizBlock.classList.add("hide");
+    // display answer block
+    answerTimeBlock.classList.remove("hide");
+    // hide highscore link
+    viewHighScores.classList.add("hide")
+    // display question block
+    questionOne.classList.remove("hide")
+
+}
+
 for (var j = 0; j < questionBlock.length; j++) {
     currentQuestion = questionBlock[j];
 }
 
-// Timer Function
-function startTimer(event) {
-    let quizTimer = setInterval(function () {
-        if (timeLeft <= 1) {
-            clearInterval(quizTimer);
-            // Trigger show leaderboard
-            showLeaderboard();
-        }
-        timeLeft -= 1;
-        timeDisplay.innerText = timeLeft;
-    }, 1000);
-}
 
 // Display Highscores & Return to Start
 function displayHighScores(event) {
     // hide start quiz
-    quizBlock.classList.add("hidden");
+    quizBlock.classList.add("hide");
     // display highscores
-    leaderBlock.classList.remove("hidden");
-    // hide your score
-    yourScore.setAttribute("style", "display: none;");
-    // hide leader form
-    leaderForm.setAttribute("style", "display: none;");
-    playAgainBtn.innerText = "Give It A Go";
+    leaderBlock.classList.remove("hide");
+    playAgainBtn.innerText = "Take Quiz";
 }
 
 // Return to start
 function returnToStart(event) {
     // display start quiz
-    quizBlock.classList.remove("hidden");
+    quizBlock.classList.remove("hide");
     // hide highscores
-    leaderBlock.classList.add("hidden");
+    leaderBlock.classList.add("hide");
 }
 
 // Show leaderboard with input & score
-function showLeaderboard() {
-    questionOne.classList.add("hidden");
-    answerTimeBlock.classList.add("hidden");
-    leaderBlock.classList.remove("hidden");
+function nameSubmit() {
+    questionOne.classList.add("hide");
+    answerTimeBlock.classList.add("hide");
+    nameInput.classList.remove("hide");
     yourScore.childNodes[1].innerText = score;
     timeLeft = initialTime;
     answerStatus.innerText = "";
@@ -72,29 +72,13 @@ function showLeaderboard() {
 
 // Submit name to leaderboard
 function submitScore(event) {
+    submitBtn.preventDefault();
     let name = document.getElementById("leader-input").value;
     leaders.name = name;
     leaders.score = score;
     let newLeaderNode = document.createElement("li");
     newLeaderNode.innerText = leaders.name + " - " + leaders.score;
     leaderboard.appendChild(newLeaderNode);
-    // save to local storage
-    localStorage.setItem("leaders", JSON.stringify(leaders));
-}
-
-// Display Questions
-function displayQuestions(event) {
-    // start timer
-    startTimer();
-    // hide start quiz
-    quizBlock.classList.add("hidden");
-    // display answer block
-    answerTimeBlock.classList.remove("hidden");
-    // hide highscore link
-    viewHighScores.classList.add("hidden")
-    // display question block
-    questionOne.classList.remove("hidden")
-
 }
 
 // Determine answer and adjust score & time
@@ -114,17 +98,32 @@ function displayAnswer(event) {
     }
 }
 
+// Timer Function
+function startTimer(event) {
+    let quizTimer = setInterval(function () {
+        if (timeLeft <= 1) {
+            clearInterval(quizTimer);
+            // Trigger show leaderboard
+            nameSubmit();
+        }
+        timeLeft -= 1;
+        timeDisplay.innerText = timeLeft;
+    }, 1000);
+}
+
+// save to local storage
+localStorage.setItem("leaders", JSON.stringify(leaders));
+
 // Event listener for Answer Buttons
 for (var i = 0; i < answerBtns.length; i++) {
     answerBtns[i].addEventListener("click", displayAnswer, false);
 }
 
-
 // Global event listeners
-submitBtn.addEventListener("click", submitScore);
+startBtn.addEventListener("click", displayQuestions);
 playAgainBtn.addEventListener("click", returnToStart);
 viewHighScores.addEventListener("click", displayHighScores);
-startBtn.addEventListener("click", displayQuestions);
+submitBtn.addEventListener("click", submitScore);
 
 // start clicked => display Q1, start timer
 
