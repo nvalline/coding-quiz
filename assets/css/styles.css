@@ -78,6 +78,12 @@ header a:hover {
     cursor: pointer;
 }
 
+.answer-btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+}
+
 /* Answer & Time Block */
 #divider {
     width: 60%;

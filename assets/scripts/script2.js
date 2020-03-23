@@ -1,11 +1,13 @@
 const startBtn = document.getElementById('start-btn')
-const startContent = document.getElementById('start-content')
+const startContainer = document.getElementById('start-container')
+const questionContainer = document.getElementById('question-container')
 const answerTimeContainer = document.getElementById('answer-time-container')
 
 startBtn.addEventListener('click', startQuiz)
 // start Quiz
 function startQuiz() {
-    startContent.classList.add('hide')
+    startContainer.classList.add('hide')
+    questionContainer.classList.remove('hide')
     answerTimeContainer.classList.remove('hide')
 }
 // display first question & answers
