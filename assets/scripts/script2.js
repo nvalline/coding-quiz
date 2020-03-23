@@ -52,6 +52,7 @@ const questions = [
 
 let currentQuestionIndex
 let nextQuestion
+let score = 0
 
 startBtn.addEventListener('click', startQuiz)
 
@@ -68,6 +69,9 @@ function startQuiz() {
 function nextQuestionIndex() {
     nextQuestion = questions.indexOf(currentQuestionIndex)
     nextQuestion++
+    currentQuestionIndex = questions[nextQuestion]
+    console.log(currentQuestionIndex)
+    console.log(nextQuestion)
 }
 
 function showNextQuestion() {
@@ -81,7 +85,7 @@ function showQuestion(question) {
 }
 
 function showAnswerButtons(answer) {
-    const button = document.createElement('button')
+    let button = document.createElement('button')
     button.innerText = answer.text
     button.classList.add('btn')
     if (answer.correct) {
@@ -91,10 +95,18 @@ function showAnswerButtons(answer) {
     answerButtonsElement.appendChild(button)
 }
 
-function selectAnswer() {
-
+function selectAnswer(event) {
+    let selectedButton = event.target
+    if (selectedButton.dataset.correct) {
+        score = score + 10
+        console.log(score)
+    } else {
+        // subtract time
+        console.log("Need to subtract time")
+    }
 
     nextQuestionIndex()
+    showNextQuestion()
 }
 
 function resetState() {
