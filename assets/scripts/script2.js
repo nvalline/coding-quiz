@@ -12,6 +12,7 @@ const leaderboardContainer = document.getElementById('leaderboard-container')
 const leaderName = document.getElementById('leader-input')
 const playAgainBtn = document.getElementById('play-again')
 const leaderboardList = document.getElementById('leaderboard-list')
+const viewHighscoresElement = document.getElementById('view-highscores')
 const questions = [
     {
         question: "An ID that has been created in your CSS can be used __________ time(s) within you HTML document?",
@@ -66,10 +67,12 @@ let currentQuestionIndex
 let nextQuestion
 let time = initialTime
 let quizTimer
+let finalScore
 
 let leaders = []
-console.log(leaders)
+
 startBtn.addEventListener('click', startQuiz)
+viewHighscoresElement.addEventListener('click', leaderboardShortcut)
 
 // start Quiz
 function startQuiz() {
@@ -149,7 +152,14 @@ function showEndScreen() {
     questionContainer.classList.add('hide')
     answerTimeContainer.classList.add('hide')
     endScreenContainer.classList.remove('hide')
-    scoreElement.innerText = score
+
+    if (time > 0) {
+        finalScore = score + "." + time
+    } else {
+        finalScore = score
+    }
+
+    scoreElement.innerText = finalScore
     submitBtn.addEventListener('click', submitLeaderInfo)
 }
 
@@ -159,29 +169,51 @@ function submitLeaderInfo(event) {
     if (leaderText === "") {
         return
     }
-    leaderText = leaderText + " - " + score
+    leaderText = leaderText + " - " + finalScore
     leaders.push(leaderText)
     leaderName.value = ""
-    console.log(leaders)
     showLeaderboard()
 }
 
 function showLeaderboard(event) {
+    resetLeaderState()
     endScreenContainer.classList.add('hide')
     leaderboardContainer.classList.remove('hide')
+    timeDisplayElement.innerText = ""
     leaders.forEach(showLeaders)
+
+    let clearButton
+    if (leaders.length > 0) {
+        clearButton = document.createElement('button')
+        clearButton.innerText = "Clear Scores"
+        clearButton.classList.add('btn')
+        leaderboardContainer.appendChild(clearButton)
+    }
+
+    // clear scores
+    clearButton.addEventListener('click', clearScores)
 
     // restart game
     playAgainBtn.addEventListener('click', resetQuiz)
 }
 
-function resetQuiz() {
+function clearScores() {
     resetLeaderState()
+    leaders = []
+    let resetLiElement = document.createElement('li')
+    resetLiElement.innerText = "No Highscores..."
+    leaderboardList.appendChild(resetLiElement)
+}
+
+function resetQuiz() {
     leaderboardContainer.classList.add('hide')
     startContainer.classList.remove('hide')
+    leaderboardContainer.removeChild(leaderboardContainer.lastElementChild)
     currentQuestionIndex = questions[0]
     nextQuestion = questions.indexOf(currentQuestionIndex)
     score = 0
+    finalScore = 0
+    time = initialTime
 }
 
 function showLeaders(leader) {
@@ -194,6 +226,13 @@ function resetLeaderState() {
     while (leaderboardList.firstChild) {
         leaderboardList.removeChild(leaderboardList.firstChild)
     }
+}
+
+function leaderboardShortcut() {
+    startContainer.classList.add('hide')
+    leaderboardContainer.classList.remove('hide')
+
+    playAgainBtn.addEventListener('click', resetQuiz)
 }
 // display first question & answers
 
