@@ -81,7 +81,6 @@ header a:hover {
 .answer-btn-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
-    gap: 10px;
 }
 
 /* Answer & Time Block */
@@ -132,14 +131,6 @@ ol li {
 
 #leader-form input::placeholder {
     color: #bdbdbd;
-}
-
-#leader-form button {
-    background-color: #43dde6;
-    border: 2px solid #2fb1b8;
-    border-radius: 5%;
-    font-size: 1rem;
-    padding: 5px 15px;
 }
 
 /* End Main CSS */
