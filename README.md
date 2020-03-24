@@ -99,6 +99,7 @@ function selectAnswer(event) {
 ## References
 
 - Nate Valline
+- Bill Lea
 - [MDN Web Docs](https://developer.mozilla.org/en-US/)
 - [W3Schools](https://www.w3schools.com/)
 - [Google](https://www.google.com)
