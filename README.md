@@ -1,6 +1,8 @@
-# Project Name
+### Project Name
 
-![Project Image](project-image-url)
+# The Coding Quiz 
+
+<img src="./assets/img/coding-quiz.png" width="600px">
 
 > Short Project Blurb
 
