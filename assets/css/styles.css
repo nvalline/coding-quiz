@@ -39,14 +39,12 @@ header a:hover {
 /* End Header CSS */
 
 /* Main CSS */
-
 #container {
     margin: 100px auto;
     width: 80%;
 }
 
 /* Quiz Content */
-/* Start Quiz */
 .content-block, .question-block {
     margin: 0 auto;
     width: 60%;
@@ -54,6 +52,10 @@ header a:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+.content-block h2 {
+    margin-bottom: 10px;
 }
 
 .question-desc {
@@ -101,18 +103,7 @@ header a:hover {
     letter-spacing: 0.1rem;
 }
 
-.content-block h2 {
-    margin-bottom: 10px;
-}
-
-ol {
-    margin: 0 auto;
-}
-
-ol li {
-    margin: 5px;
-}
-
+/* Name & Score Section */
 #leader-form {
     width: 100%;
     display: flex;
@@ -131,6 +122,15 @@ ol li {
 
 #leader-form input::placeholder {
     color: #bdbdbd;
+}
+
+/* Leaderboard Section */
+ol {
+    margin: 0 auto;
+}
+
+ol li {
+    margin: 5px;
 }
 
 /* End Main CSS */

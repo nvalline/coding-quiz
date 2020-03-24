@@ -73,19 +73,24 @@ let finalScore
 
 let leaders = []
 
+// Event listener to start quiz
 startBtn.addEventListener('click', startQuiz)
+// Event listener to display leaderboard from header link
 viewHighscoresElement.addEventListener('click', leaderboardShortcut)
 
-// start Quiz
+// start Quiz function
 function startQuiz() {
     startTimer()
+    // hide/view elements
     startContainer.classList.add('hide')
     questionContainer.classList.remove('hide')
-    currentQuestionIndex = questions[0]
     answerTimeContainer.classList.remove('hide')
+    // starting index of questions array
+    currentQuestionIndex = questions[0]
     showNextQuestion()
 }
 
+// advance to next index in questions array
 function nextQuestionIndex() {
     nextQuestion = questions.indexOf(currentQuestionIndex)
     nextQuestion++
@@ -94,7 +99,9 @@ function nextQuestionIndex() {
 
 function showNextQuestion() {
     resetAnswerState()
+    // clear answer status element after each question
     answerStatusElement.innerText = ""
+    // display next question or end screen
     if (!currentQuestionIndex || time <= 1) {
         clearInterval(quizTimer)
         showEndScreen()
@@ -104,11 +111,14 @@ function showNextQuestion() {
 }
 
 function showQuestion(question) {
+    // print question text
     questionElement.innerText = question.question
+    // print answer text
     question.answers.forEach(showAnswerButtons)
 }
 
 function showAnswerButtons(answer) {
+    // write answer buttons
     let button = document.createElement('button')
     button.innerText = answer.text
     button.classList.add('btn')
@@ -116,11 +126,13 @@ function showAnswerButtons(answer) {
         button.dataset.correct = answer.correct
     }
 
+    // listner for answer buttons
     button.addEventListener('click', selectAnswer)
     answerButtonsElement.appendChild(button)
 }
 
 function selectAnswer(event) {
+    // answer buttons reactions
     let selectedButton = event.target
     if (selectedButton.dataset.correct) {
         answerStatusElement.textContent = "Correct!"
@@ -131,6 +143,7 @@ function selectAnswer(event) {
         time = time - 10
     }
 
+    // delay next question by 1 second
     setTimeout(function () {
         nextQuestionIndex()
         showNextQuestion()
@@ -138,6 +151,7 @@ function selectAnswer(event) {
 }
 
 function resetAnswerState() {
+    // remove previous answer buttons
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
     }
@@ -157,22 +171,26 @@ function startTimer(event) {
 }
 
 function showEndScreen() {
+    // hide/view elements
     questionContainer.classList.add('hide')
     answerTimeContainer.classList.add('hide')
     endScreenContainer.classList.remove('hide')
 
+    // set final score
     if (time > 0) {
         finalScore = score + "." + time
     } else {
         finalScore = score
     }
 
+    // print final score
     scoreElement.innerText = finalScore
     submitBtn.addEventListener('click', submitLeaderInfo)
 }
 
 function submitLeaderInfo(event) {
     event.preventDefault()
+    // add leader name & score from end screen
     let leaderText = leaderName.value.trim()
     if (leaderText === "") {
         return
@@ -185,9 +203,12 @@ function submitLeaderInfo(event) {
 
 function showLeaderboard(event) {
     resetLeaderState()
+    // hide/view elements
     endScreenContainer.classList.add('hide')
     leaderboardContainer.classList.remove('hide')
+    // reset timer display
     timeDisplayElement.innerText = ""
+    // print leaders to leaderboard
     leaders.forEach(showLeaders)
 
     // restart game
@@ -195,8 +216,10 @@ function showLeaderboard(event) {
 }
 
 function resetQuiz() {
+    // hide/view elements
     leaderboardContainer.classList.add('hide')
     startContainer.classList.remove('hide')
+    // reset variables to initial values
     currentQuestionIndex = questions[0]
     nextQuestion = questions.indexOf(currentQuestionIndex)
     score = 0
@@ -205,33 +228,23 @@ function resetQuiz() {
 }
 
 function showLeaders(leader) {
+    // write leaders elements
     let liElement = document.createElement('li')
     liElement.innerText = leader
     leaderboardList.appendChild(liElement)
 }
 
 function resetLeaderState() {
+    // remove leaders elements
     while (leaderboardList.firstChild) {
         leaderboardList.removeChild(leaderboardList.firstChild)
     }
 }
 
+// view leaderboard from header link
 function leaderboardShortcut() {
     startContainer.classList.add('hide')
     leaderboardContainer.classList.remove('hide')
 
     playAgainBtn.addEventListener('click', resetQuiz)
 }
-// display first question & answers
-
-// determine if correct
-
-// advance to next question
-
-// log score
-
-// set timer
-
-// after last question advance to input
-
-// after input advance to leaderboard
